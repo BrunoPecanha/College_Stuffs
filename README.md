@@ -11,9 +11,10 @@ Este código é para uma pequena aplicação de controle de estacionamento utili
 - Utilização de cliente a vulso ( Não mensalista );
 - Baixa de registros;
 - Relatórios de uso;
+- Utilização em 3 linguas possíveis ( Portugues, Ingles e Espanhol )
 
 # Persistencia e demais registros :
-- Gravados em arquiovo txt
+- Gravados em arquivo txt
 
 * Registros gerados
 
@@ -35,6 +36,7 @@ This code is for a small parking control application using Python.
 - Use of vulvo customer (Non-monthly);
 - Finish stays;
 - Usage reports;
+- Usage in three languages (Portugues, English and Spanish)
 
 # Persistence and other records:
 - Recorded in txt file
