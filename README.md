@@ -22,7 +22,7 @@ Este código é para uma pequena aplicação de controle de estacionamento utili
 - Parametros da empresa;
 - Cadastro de clientes;
 
-# CollegeStuffs
+# College Stuffs
 * This repository is only of activities developed in the academic field, in order to keep all my codes in one place for, as I evolve, I improve them.
 
 This code is for a small parking control application using Python.
