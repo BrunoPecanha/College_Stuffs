@@ -1,0 +1,78 @@
+************************************************** Portugues
+
+##################### Bem Vindo ao Sistema de Gerenciamento de Estacionamentos - SGE ###########################
+Para iniciar escolha uma das opcoes :
+>>> Opcao : 1 - Cadastro de Novo Cliente
+ Utilizada para cadastrar um novo cliente na base de dados. Para esse cadastro sera solicitado, alem das informacoes
+do veiculo, CPF e Telefone do proprietario.
+>>> Opcao: 2 - Lozalizar Cadastro de Cliente
+ Para recuperar todas as informacoes no cadastro do cliente, utilize esta opcao.
+>>> Opcao: 3 - Entrada em novo cliente
+ Utilizada para incluir um novo carro que esta chegando no estacionamento.Ao ser utilizada, 
+o sistema verifica antes se o cliente esta cadastrado, pois caso contrario, sera necessario fazer esse registro.
+>>> Opcao: 4 - Consultar tempo do cliente no estacionamento
+ Para os clientes que ja estao no estabelecimento, e possivel atraves deste menu verificar o tempo que o carro ja esta estacionado 
+informando somente a placa, sem espaco ou tracos,  do veiculo.
+>>> Opcao: 5 - Dar baixa de cliente##
+ Ao fim da estadia do automovel no estacionamento, utilize esta opcao informando a placa, 
+sem espacos ou traco e, gerar o tempo decorrido alem do valor a pagar para clientes NAO mensalistas.
+>>> Opcao: 6 - Ajuda
+ A qualquer duvida que tiver sobre o funcionamento, consulte a opcao 6.
+>>> Opcao: 7 - Configuracoes
+ Utilize essa opcao para configurar o preco da hora por veiculo.
+>>> Opcao: 8 -  Sair
+ Aborta a aplicacao.
+
+
+************************************************** English
+
+##################### Welcome to the Parking Management System - PMS ################### ########
+To start choose one of the options:
+>>> Option: 1 - New Customer Registration
+  Used to register a new customer in the database. For this registration you will be asked, besides the information
+Of the vehicle, CPF and Telephone owner.
+>>> Option: 2 - Lozalizar Customer Registration
+  To retrieve all information in the customer master record, use this option.
+>>> Option: 3 - Entry into new client
+  Used to include a new car that is arriving in the parking lot. When used,
+The system checks beforehand if the customer is registered, otherwise it will be necessary to register.
+>>> Option: 4 - Check customer time in parking
+  For customers who are already in the establishment, it is possible through this menu to check the time the car is already parked
+Informing only the plate, without space or traces, of the vehicle.
+>>> Option: 5 - Discharge customer ##
+   At the end of the car stay in the parking lot, use this option informing the license plate,
+Without spaces or dash, and generate the elapsed time beyond the amount payable to non-monthly customers.
+>>> Option: 6 - Help
+   If you have any questions about the operation, see option 6.
+>>> Option: 7 - Settings
+   Use this option to set the hourly price per vehicle.
+>>> Option: 8 - Exit
+   Aborts application.
+
+
+
+
+************************************************** Espanol
+
+##################### Bienvenido al Sistema de Gestion de Aparcamiento - SGA ################### ########
+Para empezar a elegir una de las opciones:
+>>> Opcion 1 - Registro de Nuevo Cliente
+?Se utiliza para registrar un nuevo cliente en la base de datos. Para este registro sera necesario, ademas de la informacion
+vehiculo, CPF y el propietario del telefono.
+>>> Opcion: 2 - Lozalizar de Registro de Cliente
+?Para recuperar toda la informacion en el registro del cliente, utilice esta opcion.
+>>> Opcion: 3 - Entrada en nuevo cliente
+?Se utiliza para incluir un coche nuevo que esta llegando estacionamento.Ao ser utilizado,
+el sistema comprueba antes se ha registrado en el cliente, de lo contrario, tiene que hacer este disco.
+>>> Opcion: 4 - Consultar el tiempo del cliente en el estacionamiento
+?Para los clientes que ya estan en la propiedad es posible a traves de este menu para comprobar el tiempo que el coche ya esta estacionado
+Solo informar al consejo, sin espacio ni guiones, el vehiculo.
+>>> Opcion: 5 - Dar de baja cliente ##
+?Al final de la estancia del vehiculo en el aparcamiento, utilice esta opcion para informar a la junta,
+sin espacios ni guion y generar tiempo transcurrido, mas la cantidad a pagar a los clientes no asalariados.
+>>> Opcion: 6 - Ayuda
+?Cualquier pregunta que pueda tener sobre el funcionamiento, consulte la opcion 6.
+>>> Opcion: 7 - Configuracion
+?Utilice esta opcion para establecer el precio de horas por vehiculo.
+>>> Opcion: 8 - Salir
+?Aborta la aplicacion.
