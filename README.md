@@ -31,9 +31,9 @@ This code is for a small parking control application using Python.
 
 - Data record of the company;
 - Customer registration;
-- User registration (owner of the vehicle) as a monthly installer;
-- Use of customer to vulvo (Non-monthly);
-- Lowering of records;
+- User registration (owner of the vehicle) as a monthly user;
+- Use of vulvo customer (Non-monthly);
+- Finish stays;
 - Usage reports;
 
 # Persistence and other records:
