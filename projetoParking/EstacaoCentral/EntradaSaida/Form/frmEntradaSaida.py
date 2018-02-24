@@ -20,7 +20,18 @@ class _frmEntradaSaida:
         # informacoesClientes
         print("                           ####################################################")
         print("                           #                                                  #")
-        print("#############################               Registro de Saída                 ############################")
+        print("#############################               Registro de Saida                 ############################")
+        print("                           #                                           v  1.0 #")
+        print("                           #################################################### \n\n")
+        # endCadastroCliente
+        time.sleep(1)
+
+    def cabecalhoConsultaTempoCliente(self):
+        os.system('cls')
+        # informacoesClientes
+        print("                           ####################################################")
+        print("                           #                                                  #")
+        print("#############################            Consultar Tempo Na Casa              ############################")
         print("                           #                                           v  1.0 #")
         print("                           #################################################### \n\n")
         # endCadastroCliente

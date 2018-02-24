@@ -3,10 +3,10 @@ import tkinter as tk
 from tkinter import messagebox
 from EstacaoCentral.Parametros.Forms import frmParametros
 
-_caminhoArqConfig = "C:/Users\Bruno Peçanha\Desktop\projetoParking\EstacaoCentral\Arquivos\configuracao"
-_caminhoArqRegEntSai = "C:/Users\Bruno Peçanha\Desktop\projetoParking\EstacaoCentral\Arquivos/regEntSaida"
-_caminhoArqMenuAjuda = "C:/Users\Bruno Peçanha\Desktop\projetoParking\EstacaoCentral\Arquivos/help"
-_caminhoArqCadClientes = "C:/Users\Bruno Peçanha\Desktop\projetoParking\EstacaoCentral\Arquivos/clientes"
+_caminhoArqConfig = "C:/Users\Ramilson\Dropbox\Sistemas de Informação\Programação\Trabalho\projetoParking\EstacaoCentral\Arquivos\configuracao"
+_caminhoArqRegEntSai = "C:/Users\Ramilson\Dropbox\Sistemas de Informação\Programação\Trabalho\projetoParking\EstacaoCentral\Arquivos/regEntSaida"
+_caminhoArqMenuAjuda = "C:/Users\Ramilson\Dropbox\Sistemas de Informação\Programação\Trabalho\projetoParking\EstacaoCentral\Arquivos/help"
+_caminhoArqCadClientes = "C:/Users\Ramilson\Dropbox\Sistemas de Informação\Programação\Trabalho\projetoParking\EstacaoCentral\Arquivos/clientes"
 _arqConfig = "/configs"+".txt"
 _arqCadClientes = "/cadastroClientes"+".txt"
 _arqRegEntSai = "/registroEntradaSaida"+".txt"
@@ -28,34 +28,38 @@ class utils:
         return ret
 
     def checkLinhaRegistro(placa, caminhoArq, nomeArq):  # Devolve a linha que o cliente foi encontrado
+        from EstacaoCentral.Cliente.Classes import bsnCliente as cliente
+        while len(placa) != 7:
+            placa = cliente._bsnCliente.recuperaPlaca('')
         i = 0
-        ret = 0
-        found = False
         utils.verificarArq(caminhoArq, nomeArq)
         arq = open(caminhoArq + nomeArq, 'r')
-        for linha in arq:
-            if placa in linha:
-                found = True
+        linha = arq.readline()
+        while linha != '':
+            x = linha.find(placa, 0, 7)
+            if x != -1:
                 break
             else:
-                i += 1
-        if found:
+                i = i + 1
+                linha = arq.readline()
+        if x != -1:
             ret = i
         else:
-            ret = -1
+            ret = x
         return ret
 
-    def fomataCPFCNPJTel(nums, tipo):
-        if tipo.__eq__("CPF"): # Formata o CPF
-            ret = "%s.%s.%s-%s" % (nums[0:3], nums[3:6], nums[6:9], nums[9:11])
-        if tipo.__eq__("CNPJ"): # Formata o CNPJ
-            ret = "%s.%s.%s/%s-%s" % (nums[0:2], nums[2:5], nums[5:8], nums[8:12], nums[12:14])
-        elif len(nums) == 8: # Formatacao Telefone Fixo
+    def fomataCPF(nums, tipo):
+        ret = "%s.%s.%s-%s" % (nums[:3], nums[3:6], nums[6:9], nums[9:])
+        return ret
+    def fomataCNPJ(nums, tipo):
+        ret = "%s.%s.%s/%s-%s" % (nums[0:2], nums[2:5], nums[5:8], nums[8:12], nums[12:14])
+        return ret
+    def fomataTel(nums, tipo):
+        if len(nums) == 8: # Formatacao Telefone Fixo
             ret = "%s-%s" % (nums[0:4], nums[4:8])
         else: # Fomatação Celular
-            ret = "%s %s-%s" % (nums[0:1], nums[1:5], nums[5:9])
+            ret = "%s %s-%s" % (nums[0:2], nums[2:7], nums[7:])
         return ret
-
     def recuperaDiaHora(self):
         return (data.datetime.now().strftime("%d-%m-%Y %H:%M:%S"'\n'))
 
@@ -85,10 +89,10 @@ class utils:
 
     def criarEstrutura(self):
 
-        __caminho1 = "C:/Users\Bruno Peçanha\Desktop\projetoParking\EstacaoCentral\Arquivos/configuracao"
-        __caminho2 = "C:/Users\Bruno Peçanha\Desktop\projetoParking\EstacaoCentral\Arquivos/regEntSaida"
-        __caminho3 = "C:/Users\Bruno Peçanha\Desktop\projetoParking\EstacaoCentral\Arquivos/help"
-        __caminho4 = "C:/Users\Bruno Peçanha\Desktop\projetoParking\EstacaoCentral\Arquivos/clientes"
+        __caminho1 = "C:/Users\Ramilson\Dropbox\Sistemas de Informação\Programação\Trabalho\projetoParking\EstacaoCentral\Arquivos/configuracao"
+        __caminho2 = "C:/Users\Ramilson\Dropbox\Sistemas de Informação\Programação\Trabalho\projetoParking\EstacaoCentral\Arquivos/regEntSaida"
+        __caminho3 = "C:/UsersRamilson\Dropbox\Sistemas de Informação\Programação\Trabalho\projetoParking\EstacaoCentral\Arquivos/help"
+        __caminho4 = "C:/Users\Ramilson\Dropbox\Sistemas de Informação\Programação\Trabalho\projetoParking\EstacaoCentral\Arquivos/clientes"
 
         caminhos = [__caminho1, __caminho2, __caminho3,__caminho4]  # Crio uma lista com todos os caminhos que vou usar.
 
@@ -149,7 +153,7 @@ class utils:
             ret = nomeEmpresa[:15]
         elif menu.__eq__(6):
             ret = cidade
-        else:
+        elif menu.__eq__(7):
             ret = vlrDiaria
         return ret
 

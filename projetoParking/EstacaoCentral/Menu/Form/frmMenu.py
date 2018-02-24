@@ -22,5 +22,6 @@ class frmMenu:
         print(idiomas._idiomas.mensAjuda)
         print(idiomas._idiomas.mensConfigs)
         print(idiomas._idiomas.mensTodosCli)
+        print(idiomas._idiomas.mensMenuExcluir)
         print(idiomas._idiomas.mensSair+ '\n')
         time.sleep(1)

@@ -5,6 +5,8 @@ from EstacaoCentral.Menu.Form import frmMenu
 from EstacaoCentral.Utils.Classes import utils as utilitarios
 from EstacaoCentral.Utils.Classes import idiomas
 from EstacaoCentral.Cliente.Classes import bsnCliente as cliente
+from EstacaoCentral.EntradaSaida.Classes import bsnEntradaSaida
+
 
 class _menuPrincipal:
 
@@ -13,7 +15,7 @@ class _menuPrincipal:
         print(idiomas._idiomas.mensOp)
         ret = input()
 
-        while not(ret.__eq__('1')) and not(ret.__eq__('2')) and not(ret.__eq__('3')) and not(ret.__eq__('4')) and not(ret.__eq__('5')) and not(ret.__eq__('6')) and not(ret.__eq__('7')) and not(ret.__eq__('8')) and not(ret.__eq__('9')):
+        while not(ret.__eq__('1')) and not(ret.__eq__('2')) and not(ret.__eq__('3')) and not(ret.__eq__('4')) and not(ret.__eq__('5')) and not(ret.__eq__('6')) and not(ret.__eq__('7')) and not(ret.__eq__('8')) and not(ret.__eq__('9')) and not(ret.__eq__('0')):
             os.system('cls')
             frmMenu.frmMenu.menuPrincipal('')
             print(idiomas._idiomas.mensOpValida)
@@ -28,13 +30,13 @@ class _menuPrincipal:
                 cliente._bsnCliente.recuperaCadastro(utilitarios.utils.checkLinhaRegistro(cliente._bsnCliente.recuperaPlaca('').upper(), utilitarios._caminhoArqCadClientes, utilitarios._arqCadClientes))
                 _menuPrincipal.refazerOuMenuInicial('2')
             elif ret.__eq__('3'):
-                cliente._bsnCliente.entrada('')
+                bsnEntradaSaida.entradaSaida.entrada('')
                 _menuPrincipal.refazerOuMenuInicial('3')
             elif ret.__eq__('4'):
-                float
+                bsnEntradaSaida.entradaSaida.TempoClienteNoEstacionamento(cliente._bsnCliente.recuperaPlaca(''))
                 _menuPrincipal.refazerOuMenuInicial('4')
             elif ret.__eq__('5'):
-                float
+                bsnEntradaSaida.entradaSaida.iniciaBaixaCliente('')
                 _menuPrincipal.refazerOuMenuInicial('5')
             elif ret.__eq__("6"):
                 utilitarios.utils.mostraInstrucoes('')
@@ -44,8 +46,11 @@ class _menuPrincipal:
                 _menuPrincipal.refazerOuMenuInicial('7')
                 utilitarios.utils.recuperarParametros('')
             elif ret.__eq__('8'):
-                float
+                bsnEntradaSaida.entradaSaida.mostraTodosClientes('')
                 _menuPrincipal.refazerOuMenuInicial('8')
+            elif ret.__eq__('9'):
+                cliente._bsnCliente.excluirCadastroCliente(cliente._bsnCliente.recuperaPlaca(''))
+                _menuPrincipal.refazerOuMenuInicial('9')
             else:
                 if (utilitarios.utils.finalizarApp('')):
                     exit()
@@ -60,21 +65,29 @@ class _menuPrincipal:
         else:
             if menu.__eq__("1"):
                 cliente._bsnCliente.entradaInfNovoCliente('')
+                _menuPrincipal.refazerOuMenuInicial('1')
             elif menu.__eq__("2"):
-                cliente._bsnCliente.recuperaCadastro(
-                    utilitarios.utils.checkLinhaRegistro(cliente._bsnCliente.recuperaPlaca('').upper(),
-                                                         utilitarios._caminhoArqCadClientes,
-                                                         utilitarios._arqCadClientes))
-                _menuPrincipal.refazerOuMenuInicial('')
+                cliente._bsnCliente.recuperaCadastro(utilitarios.utils.checkLinhaRegistro(cliente._bsnCliente.recuperaPlaca('').upper(), utilitarios._caminhoArqCadClientes, utilitarios._arqCadClientes))
+                _menuPrincipal.refazerOuMenuInicial('2')
             elif menu.__eq__("3"):
-                cliente._bsnCliente.entrada('')
-                _menuPrincipal.refazerOuMenuInicial('')
+                bsnEntradaSaida.entradaSaida.entrada('')
+                _menuPrincipal.refazerOuMenuInicial('3')
             elif menu.__eq__("4"):
-                float
+                bsnEntradaSaida.entradaSaida.retornaTempoNoEstacionamento(cliente._bsnCliente.recuperaPlaca(''))
+                _menuPrincipal.refazerOuMenuInicial('4')
             elif menu.__eq__("5"):
-                float
+                bsnEntradaSaida.entradaSaida.iniciaBaixaCliente('')
+                _menuPrincipal.refazerOuMenuInicial('5')
             elif menu.__eq__("6"):
                 utilitarios.utils.mostraInstrucoes('')
-                _menuPrincipal.refazerOuMenuInicial('')
+                _menuPrincipal.refazerOuMenuInicial('6')
             elif menu.__eq__("7"):
-                float
+                bsnValidacaoInicial._bsnValidacaoInicial.parametrizarConfiguracao('')
+                _menuPrincipal.refazerOuMenuInicial('7')
+                utilitarios.utils.recuperarParametros('')
+            elif menu.__eq__("8"):
+                bsnEntradaSaida.entradaSaida.mostraTodosClientes('')
+                _menuPrincipal.refazerOuMenuInicial('8')
+            elif menu.__eq__("9"):
+                cliente._bsnCliente.excluirCadastroCliente(cliente._bsnCliente.recuperaPlaca(''))
+                _menuPrincipal.refazerOuMenuInicial('')

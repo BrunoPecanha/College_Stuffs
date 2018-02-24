@@ -7,7 +7,6 @@ class _bsnCliente:
 
     def entradaInfNovoCliente(self):
         formCabecalho._frmCliente.cabecalhoCadNovoCliente('')
-        utils.utils.verificarArq(utils._caminhoArqCadClientes , utils._arqConfig)
 
         dic = []
         print(idiomas._idiomas.mensPlaca)
@@ -33,13 +32,13 @@ class _bsnCliente:
         arq = open(utils._caminhoArqCadClientes+utils._arqCadClientes, 'a')
         arq.writelines(dic)
         arq.close()
-        print(idiomas._idiomas.mensCadasFeitoComSucesso + time.strftime("%H:%M:%S"))
+        utils.utils.alertaArquivo(idiomas._idiomas.mensAtencao ,idiomas._idiomas.mensCadasFeitoComSucesso + time.strftime("%H:%M:%S"))
 
         formCabecalho._frmCliente.cabecalhoCadNovoCliente('')
 
 
     def recuperaPlaca(self):
-        return input(idiomas._idiomas.mensPlaca)
+        return input(idiomas._idiomas.mensPlaca).upper()
 
     def recuperaCadastro(nLinha):
         formCabecalho._frmCliente.cabecalhoConsultarCliente('')
@@ -52,8 +51,8 @@ class _bsnCliente:
             print(idiomas._idiomas.mensInfoPlaca, placa)
             print(idiomas._idiomas.mensPrimeiroNome, nome)
             print(idiomas._idiomas.mensSobreNome, sobreNome)
-            print(idiomas._idiomas.mensCPF, utils.utils.fomataCPFCNPJTel(cpf, "CPF"))
-            print(idiomas._idiomas.mensTelefone, utils.utils.fomataCPFCNPJTel(tel, "Fixo"))
+            print(idiomas._idiomas.mensCPF, utils.utils.fomataCPF(cpf, "CPF"))
+            print(idiomas._idiomas.mensTelefone, utils.utils.fomataTel(tel, "Fixo"))
             print(idiomas._idiomas.mensModeloVeiculo, modelo)
             print(idiomas._idiomas.mensAnoVeiculo, ano)
             print(idiomas._idiomas.mensCliMensalista, tipo.upper())
@@ -84,30 +83,7 @@ class _bsnCliente:
             ret = tipo
         else:
             ret = dataCadastro
-
         return ret
-
-    def entrada(self):
-        formCabecalho._frmCliente.cabecalhoEntradaCliente('') #Escreve o cabeçalho do menu
-
-        utils.utils.verificarArq(utils._caminhoArqRegEntSai, utils._arqRegEntSai)
-        placa = _bsnCliente.recuperaPlaca('')
-
-        if (_bsnCliente.verificarCadastradoCliente(placa.upper()) == 0): # Se o usuário não quis cadastrar, ele retorna 0
-            tipoCostumer = 'N'                                          # Mas dá entrada assim mesmo como Não Mensalista
-        else:
-            tipoCostumer = _bsnCliente.verificarCadastradoCliente(placa.upper())  # Do contrário ele devolve a placa
-
-        dadosEntrada= []
-
-        dadosEntrada.append(placa.upper()+'@')
-        dadosEntrada.append(time.strftime("%d-%m-%Y")+'@')
-        dadosEntrada.append(time.strftime("%H:%M")+'@')
-        dadosEntrada.append(str(tipoCostumer) + "\n")
-        arq = open(utils._caminhoArqRegEntSai+utils._arqRegEntSai,  'a')
-        arq.writelines(dadosEntrada)
-        arq.close()
-        print(idiomas._idiomas.mensCliIncluidoComSucesso + utils.utils.recuperaDiaHora(''))
 
     def verificarCadastradoCliente(placa):
         ret = 0
@@ -122,3 +98,22 @@ class _bsnCliente:
         else:
             ret = _bsnCliente.retornarDadosCliente(placa, '8')
         return ret
+
+    def excluirCadastroCliente(placa):
+        linha = []
+        x = utils.utils.checkLinhaRegistro(placa, utils._caminhoArqCadClientes, utils._arqCadClientes)
+        if x == -1:
+            print(idiomas._idiomas.mensNaoHaComoExcluirCli)
+        else:
+            arq = open(utils._caminhoArqCadClientes+utils._arqCadClientes, 'r')
+            teste = arq.readline()
+            while teste != '':
+                linha.append(teste)
+                teste = arq.readline()
+            arq.close()
+            arq = open(utils._caminhoArqCadClientes+utils._arqCadClientes, 'w')
+            for i in range(len(linha)):
+                if i != x:
+                    arq.write(linha[i])
+            arq.close()
+            utils.utils.alertaArquivo(idiomas._idiomas.mensAtencao, idiomas._idiomas.mensExluidoComSucesso)

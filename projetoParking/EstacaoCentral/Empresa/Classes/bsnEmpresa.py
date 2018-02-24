@@ -1,18 +1,20 @@
+from EstacaoCentral.Utils.Classes import utils
+from EstacaoCentral.Utils.Classes import idiomas
+
 class _bsnEmpresa:
 
     def recuperaDadosEmpresa(menu):
         # from projEstacionamento.mensagens import classMensagens as msgs
 
         try:
-            open("C:/Users\Bruno Peçanha\Desktop\projEstacionamento\projEstacionamento/files/Configuracoes/configs.txt",
-                 'r')
+            open(utils._caminhoArqConfig+utils._arqConfig,'r')
         except:
-            open("C:/Users\Bruno Peçanha\Desktop\projEstacionamento\projEstacionamento/files/Configuracoes/configs.txt",
-                 'w')
+            open(utils._caminhoArqConfig+utils._arqConfig,'w')
+            utils.utils.alertaArquivo(idiomas._idiomas.mensAtencao, idiomas._idiomas.mensArqConfigNaoParametrizado)
             #alerts.alerts.alertaArquivo("Teste", "Mensagem")  # msgs._mensagens._msg01, msgs._mensagens._msg40)
             #configuracao.confuracaoes('')
 
-        arq = open(dir._diretorios._caminhoArqConfig + nomeArqs._nomeArquivos._arqConfig, 'r')
+        arq = open(utils._caminhoArqConfig + utils._arqConfig,  'r')
         config = arq.readlines()[0]
         nomeEmp, endEmp, cidadeEmp, vlrTx, vlrFrac, vlrMens, idioma, vlrDiaria = config.split("@", maxsplit=7)
         ret = 0
